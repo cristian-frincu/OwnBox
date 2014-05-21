@@ -16,27 +16,29 @@ public class FileBackupClient {
     /**
      * @param args the command line arguments
      */
-    
+     PrefferenceManagement pm = new PrefferenceManagement();
+     fileManager fm = new fileManager (pm.getFolderToUpdate());
+     LinkedList <FileInformation> filesToBackup =fm.getListOfAllFiles();
+     InternetCommunicator ic = new InternetCommunicator(pm);
+     ReportManager rm = new ReportManager(pm);
+       
+       
     public static void main(String[] args) {
-        // TODO code application logic here
-        PrefferenceManagement pm = new PrefferenceManagement();
-        fileManager fm = new fileManager (pm.getFolderToUpdate());
-        LinkedList <FileInformation> filesToBackup =fm.getListOfAllFiles();
-        
-        for(FileInformation s : filesToBackup) { 
-         //System.out.println(s.getFileName());
-        }
-       InternetCommunicator ic = new InternetCommunicator(pm);
-       ReportManager rm = new ReportManager(ic,pm);
-        //LinkedList <FileInformation> clientFiles = rm.parseReport("/Users/Cristian/BackupToPiFolder/clientReport.txt");
-        //LinkedList <FileInformation> serverFiles = rm.parseReport("/Users/Cristian/BackupToPiFolder/serverReport.txt");
-     
-     //  rm.writeReportToFile(filesToBackup, "/Users/Cristian/BackupToPiFolder/serverReport.txt");
-      rm.checkFilesMissingFromServer("/Users/Cristian/BackupToPiFolder/clientReport.txt", "/Users/Cristian/BackupToPiFolder/serverReport.txt");
-       ic.terminateConnection();
-        
+       
     }
-    public static void uploadToServer(String fineName){
-        
+    
+    
+    public void uploadToServerWithPath(String filePath){
+        String fileName=filePath.replace(pm.getFolderToUpdate(),"");
+        ic.sendFileByPath(filePath, fileName);
+        ic.terminateConnection();
+    }
+    public void uploadToSeverWithCustomReport(String pathToReport){
+        ReportManager crm = new ReportManager(); 
+        LinkedList <FileInformation> customReportToUpload = crm.parseReport(pathToReport);
+        for(FileInformation f: customReportToUpload){
+            ic.sendFileByFileInformation(f);
+        }
+        ic.terminateConnection();
     }
 }

@@ -43,18 +43,7 @@ public class InternetCommunicator {
   
     }
  
-   
-    public  void sendFileByName(String fileName){
-      try {
-           //ps.println("Starting File Upload:");
-           String fsrc =homeFolder.concat("/"+fileName) , fdest = "/home/admin/BackupFromLaptop".concat("/"+fileName);
-           c.put(fsrc, fdest);
-           //ps.println("Upload finished");
-       
-         
-       } catch (Exception e) {	e.printStackTrace();  terminateConnection();	}
-          
-    }
+
       public  void sendFileByPath(String absolutePath,String fileName){
       try {
            ps.println("Starting File Upload:");
