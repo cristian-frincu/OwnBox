@@ -1,0 +1,11 @@
+#Local Settings
+FolderToBackup = /Users/Cristian/BackupToPiFolder
+KnownHostFile = /Users/Cristian/.ssh/known_hosts
+IdentityKeyFile = /Users/Cristian/.ssh/id_rsa
+
+#Internet Settings
+IPAddress = 192.168.0.107
+Port = 1222
+User = admin
+Pass = 
+
