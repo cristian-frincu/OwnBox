@@ -1,0 +1,3 @@
+#Local Settings
+FolderToWatch = /Users/Cristian/BackupToPiFolder
+CheckEvery(sec) = 5; 
