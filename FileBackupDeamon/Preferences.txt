@@ -8,5 +8,5 @@ IPAddress = 192.168.0.107
 IPAddress = 108.170.142.88
 Port = 1222
 User = admin
-Pass = ricutica
+Pass =
 
