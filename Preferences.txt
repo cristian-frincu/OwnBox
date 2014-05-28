@@ -7,5 +7,4 @@ IdentityKeyFile = /Users/Cristian/.ssh/id_rsa
 IPAddress = 192.168.0.107
 Port = 1222
 User = admin
-Pass = ricutica
-
+Pass = 
